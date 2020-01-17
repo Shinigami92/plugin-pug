@@ -28,7 +28,8 @@
 	"bugs": "https://github.com/prettier/plugin-pug/issues",
 	"license": "MIT",
 	"dependencies": {
-		"pug-lexer": "~4.1.0"
+		"pug-lexer": "~4.1.0",
+		"pug-parser": "~5.0.1"
 	},
 	"devDependencies": {
 		"@types/jest": "~24.9.0",
