@@ -9,14 +9,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 13.x, 14.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: Install Yarn
+      run: yarn -v
 
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Lint
+      run: yarn lint
+
+    - name: Test
+      run: yarn jest --ci --silent --reporters=default --reporters=jest-junit
+
+    - name: Audit
+      run: yarn audit
+
+    - name: Build
+      run: yarn build
