@@ -38,6 +38,13 @@ jobs:
     - name: Test
       run: yarn jest --ci --silent --reporters=default --reporters=jest-junit
 
+    - name: Upload test artifact
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: JUnit
+        path: junit.xml
+
     - name: Audit
       run: yarn audit
 
