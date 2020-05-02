@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
-        name: JUnit
+        name: JUnit_${{ matrix.os }}_${{ matrix.node }}_${{ github.sha }}
         path: junit.xml
 
     - name: Audit
